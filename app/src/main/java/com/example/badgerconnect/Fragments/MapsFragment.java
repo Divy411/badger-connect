@@ -183,7 +183,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
 
     private void setUpMap() {
         // Obtain the SupportMapFragment and get notified when the map is ready to be used
-        //CHANGES BY CJ -- VERY NEXT LINE GAVE ERROS DUE IMPROPER UNNESTING. RESOLVED
         SupportMapFragment mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager().getFragments().get(0).getChildFragmentManager().getFragments().get(0);
         mapFragment.getMapAsync(this);
     }
@@ -198,7 +197,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
         userLocationReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                mMap.clear(); //@TODO FOR DIVY--WOULD CRASH THE CODE. TRY TO DERIVE THE SAME RESULT USING ANOTHER METHOD
+//                mMap.clear(); // 
 
                 try {
                     String databaseLatitudeString = dataSnapshot.child("user_latitude").getValue().toString();
@@ -372,7 +371,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback {
                                 .snippet(username + "\n" +major + "\nDescription: " + description + "\nTime: " + time)
                                 .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_YELLOW));
                         Marker marker = mMap.addMarker(markerOptions);
-                        // Set the marker tag to the event ID
+                        
 
 
                         saveMarkerToFirebase(marker);
